@@ -33,8 +33,8 @@ export default function FilterBar() {
                 >
                     <MenuItem value="all">All Priorities</MenuItem>
                     <MenuItem value="low">Low</MenuItem>
+                    <MenuItem value="medium">Medium</MenuItem>
                     <MenuItem value="high">High</MenuItem>
-                    <MenuItem value="completed">Completed</MenuItem>
                 </Select>
             </FormControl>
         </Box>

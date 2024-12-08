@@ -26,7 +26,7 @@ export default function Sidebar() {
                 <ListItem sx={{ p: 0, mb: 1 }}>Wireframes</ListItem>
             </List>
 
-            <Box sx={{ backgroundColor: 'yellow.50', p: 2, mt: 4, borderRadius: 1 }}>
+            <Box sx={{ backgroundColor: 'yellow.50', p: 2, mt: 4, borderRadius: 1, textAlign: 'center' }}>
                 <Typography variant="subtitle2" fontWeight="bold" sx={{ mb: 1 }}>Thoughts Time</Typography>
                 <Typography variant="caption" color="gray.600">
                     We don’t have any notice for you, till then you can share your thoughts with your peers.

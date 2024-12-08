@@ -3,9 +3,9 @@ import { Box, Typography, Chip, Stack, AvatarGroup, Avatar } from '@mui/material
 
 export default function TaskCard({ task, provided, innerRef }) {
     const priorityColor = {
-        low: 'primary',
+        low: 'info',
         high: 'error',
-        completed: 'success'
+        medium: 'warning'
     }[task.priority] || 'default';
 
     return (

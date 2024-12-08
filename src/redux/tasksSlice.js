@@ -46,7 +46,7 @@ const initialState = [
         title: 'Design System',
         description: 'Adapt UI from what we did before.',
         status: 'done',
-        priority: 'completed',
+        priority: 'medium',
         commentsCount: 12,
         filesCount: 15,
         assignedTo: ['Charlie', 'Diana']
