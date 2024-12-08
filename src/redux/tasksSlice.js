@@ -84,18 +84,14 @@ const tasksSlice = createSlice({
             }
         },
         reorderTasks(state, action) {
-            // For DnD reordering
             const { sourceIndex, destinationIndex, sourceDroppableId, destinationDroppableId } = action.payload;
-            // Filter tasks by columns
             const tasksInSource = state.filter(t => t.status === sourceDroppableId);
             const [moved] = tasksInSource.splice(sourceIndex, 1);
             moved.status = destinationDroppableId;
-            const tasksInDestination = state.filter(t => t.status === destinationDroppableId);
 
-            // Insert moved task into the new array at destinationIndex
+            const tasksInDestination = state.filter(t => t.status === destinationDroppableId);
             tasksInDestination.splice(destinationIndex, 0, moved);
 
-            // Reconstruct the state with updated tasks
             const filteredState = state.filter(t => t.id !== moved.id);
             return [...filteredState, ...tasksInDestination];
         }

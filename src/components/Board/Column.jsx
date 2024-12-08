@@ -1,29 +1,33 @@
 /* eslint-disable react/prop-types */
-import { Box, Heading, IconButton, Flex } from '@chakra-ui/react';
-import { AddIcon } from '@chakra-ui/icons';
 import { useState } from 'react';
+import { Box, Typography, IconButton, Stack } from '@mui/material';
 import AddTaskModal from './AddTaskModal';
+import AddIcon from '@mui/icons-material/Add';
 
 export default function Column({ title, tasks, droppableProps, innerRef, placeholder, status }) {
-    const [isOpen, setIsOpen] = useState(false);
-    const onClose = () => setIsOpen(false);
+    const [open, setOpen] = useState(false);
 
     return (
-        <Box w="300px" p={4} bg="gray.50" borderRadius="md" minH="80vh">
-            <Flex align="center" justify="space-between" mb={4}>
-                <Heading size="sm" color="gray.700">{title}</Heading>
-                <IconButton
-                    aria-label="Add Task"
-                    icon={<AddIcon />}
-                    size="sm"
-                    onClick={() => setIsOpen(true)}
-                />
-            </Flex>
-            <Box ref={innerRef} {...droppableProps} minH="calc(100% - 40px)">
+        <Box
+            sx={{
+                width: 300,
+                p: 2,
+                backgroundColor: '#f0f0f0',
+                borderRadius: 1,
+                minHeight: '80vh'
+            }}
+        >
+            <Stack direction="row" justifyContent="space-between" alignItems="center" mb={2}>
+                <Typography variant="subtitle1" fontWeight="bold">{title}</Typography>
+                <IconButton size="small" onClick={() => setOpen(true)}>
+                    <AddIcon fontSize="small" />
+                </IconButton>
+            </Stack>
+            <Box ref={innerRef} {...droppableProps} sx={{ minHeight: 'calc(100% - 40px)' }}>
                 {tasks}
                 {placeholder}
             </Box>
-            <AddTaskModal isOpen={isOpen} onClose={onClose} status={status} />
+            <AddTaskModal open={open} onClose={() => setOpen(false)} status={status} />
         </Box>
     );
 }

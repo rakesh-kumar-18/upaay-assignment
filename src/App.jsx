@@ -1,20 +1,18 @@
-import { Flex } from '@chakra-ui/react';
+import { Box } from '@mui/material';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import Dashboard from './pages/Dashboard';
 
-function App() {
+export default function App() {
   return (
-    <Flex h="100vh" direction="column">
+    <Box display="flex" flexDirection="column" height="100vh">
       <Header />
-      <Flex flex="1" overflow="hidden">
+      <Box display="flex" flex="1" overflow="hidden">
         <Sidebar />
-        <Flex flex="1" overflowY="auto" p={4}>
+        <Box flex="1" overflow="auto" p={2}>
           <Dashboard />
-        </Flex>
-      </Flex>
-    </Flex>
+        </Box>
+      </Box>
+    </Box>
   );
 }
-
-export default App;

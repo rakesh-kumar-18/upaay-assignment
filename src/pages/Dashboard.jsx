@@ -1,4 +1,4 @@
-import { Flex } from '@chakra-ui/react';
+import { Box, Stack } from '@mui/material';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { useSelector, useDispatch } from 'react-redux';
 import Column from '../components/Board/Column';
@@ -41,10 +41,10 @@ export default function Dashboard() {
     ];
 
     return (
-        <Flex direction="column" p={4} flex="1">
+        <Box sx={{ flex: 1, p: 2 }}>
             <FilterBar />
             <DragDropContext onDragEnd={onDragEnd}>
-                <Flex gap={4}>
+                <Stack direction="row" spacing={2}>
                     {columns.map(column => (
                         <Droppable droppableId={column.id} key={column.id}>
                             {(provided) => (
@@ -69,8 +69,8 @@ export default function Dashboard() {
                             )}
                         </Droppable>
                     ))}
-                </Flex>
+                </Stack>
             </DragDropContext>
-        </Flex>
+        </Box>
     );
 }

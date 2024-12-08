@@ -1,36 +1,38 @@
-import { Box, Flex, VStack, Heading, Text, Button } from '@chakra-ui/react';
+import { Box, Typography, List, ListItem, Button } from '@mui/material';
 
 export default function Sidebar() {
     return (
-        <Flex
-            direction="column"
-            bg="white"
-            w="250px"
-            p={4}
-            borderRight="1px solid"
-            borderColor="gray.200"
+        <Box
+            sx={{
+                width: 250,
+                backgroundColor: '#fff',
+                borderRight: '1px solid #ccc',
+                p: 2
+            }}
         >
-            <VStack align="start" spacing={4} mb={8}>
-                <Text fontWeight="bold">Home</Text>
-                <Text>Messages</Text>
-                <Text>Tasks</Text>
-                <Text>Members</Text>
-                <Text>Settings</Text>
-            </VStack>
+            <List>
+                <ListItem sx={{ p: 0, mb: 2 }}><Typography fontWeight="bold">Home</Typography></ListItem>
+                <ListItem sx={{ p: 0, mb: 2 }}>Messages</ListItem>
+                <ListItem sx={{ p: 0, mb: 2 }}>Tasks</ListItem>
+                <ListItem sx={{ p: 0, mb: 2 }}>Members</ListItem>
+                <ListItem sx={{ p: 0, mb: 2 }}>Settings</ListItem>
+            </List>
 
-            <Heading size="sm" mb={4} color="gray.600">My Projects</Heading>
-            <VStack align="start" spacing={2} mb={8}>
-                <Text fontWeight="bold" color="gray.800">Mobile App</Text>
-                <Text color="gray.600">Website Redesign</Text>
-                <Text color="gray.600">Design System</Text>
-                <Text color="gray.600">Wireframes</Text>
-            </VStack>
+            <Typography variant="subtitle2" color="gray.600" sx={{ mt: 4, mb: 2 }}>My Projects</Typography>
+            <List>
+                <ListItem sx={{ p: 0, mb: 1 }}><Typography fontWeight="bold">Mobile App</Typography></ListItem>
+                <ListItem sx={{ p: 0, mb: 1 }}>Website Redesign</ListItem>
+                <ListItem sx={{ p: 0, mb: 1 }}>Design System</ListItem>
+                <ListItem sx={{ p: 0, mb: 1 }}>Wireframes</ListItem>
+            </List>
 
-            <Box p={4} bg="yellow.50" borderRadius="md">
-                <Heading size="sm" mb={2}>Thoughts Time</Heading>
-                <Text fontSize="xs" color="gray.600" mb={2}>We don’t have any notice for you, till then you can share your thoughts with your peers.</Text>
-                <Button size="sm" colorScheme="yellow">Write a message</Button>
+            <Box sx={{ backgroundColor: 'yellow.50', p: 2, mt: 4, borderRadius: 1 }}>
+                <Typography variant="subtitle2" fontWeight="bold" sx={{ mb: 1 }}>Thoughts Time</Typography>
+                <Typography variant="caption" color="gray.600">
+                    We don’t have any notice for you, till then you can share your thoughts with your peers.
+                </Typography>
+                <Button variant="contained" size="small" sx={{ mt: 1 }}>Write a message</Button>
             </Box>
-        </Flex>
+        </Box>
     );
 }
