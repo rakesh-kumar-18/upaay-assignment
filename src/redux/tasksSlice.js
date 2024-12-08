@@ -85,15 +85,25 @@ const tasksSlice = createSlice({
         },
         reorderTasks(state, action) {
             const { sourceIndex, destinationIndex, sourceDroppableId, destinationDroppableId } = action.payload;
-            const tasksInSource = state.filter(t => t.status === sourceDroppableId);
-            const [moved] = tasksInSource.splice(sourceIndex, 1);
+
+            const todoTasks = state.filter(t => t.status === 'todo');
+            const inProgressTasks = state.filter(t => t.status === 'inProgress');
+            const doneTasks = state.filter(t => t.status === 'done');
+
+            const sourceArray = sourceDroppableId === 'todo' ? todoTasks
+                : sourceDroppableId === 'inProgress' ? inProgressTasks
+                    : doneTasks;
+
+            const destinationArray = destinationDroppableId === 'todo' ? todoTasks
+                : destinationDroppableId === 'inProgress' ? inProgressTasks
+                    : doneTasks;
+
+            const [moved] = sourceArray.splice(sourceIndex, 1);
             moved.status = destinationDroppableId;
+            destinationArray.splice(destinationIndex, 0, moved);
 
-            const tasksInDestination = state.filter(t => t.status === destinationDroppableId);
-            tasksInDestination.splice(destinationIndex, 0, moved);
-
-            const filteredState = state.filter(t => t.id !== moved.id);
-            return [...filteredState, ...tasksInDestination];
+            state.length = 0;
+            state.push(...todoTasks, ...inProgressTasks, ...doneTasks);
         }
     }
 });
