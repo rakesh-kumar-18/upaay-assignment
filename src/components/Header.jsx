@@ -1,13 +1,17 @@
 import { AppBar, Toolbar, Typography, InputBase, Avatar, IconButton, Box } from '@mui/material';
 import { Search, Notifications } from '@mui/icons-material';
+import logo from '../assets/header-logo.png';
 
 export default function Header() {
     return (
-        <AppBar position="static" color="inherit" elevation={1} sx={{ backgroundColor: '#fff' }}>
+        <AppBar position="static" color="inherit" elevation={0} sx={{ backgroundColor: '#fff', borderBottom: '1px solid #ccc' }}>
             <Toolbar sx={{ justifyContent: 'space-between' }}>
-                <Typography variant="h6" sx={{ color: 'gray.700' }}>
-                    Project M.
-                </Typography>
+                <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                    <img src={logo} alt="Project Logo" style={{ height: 30, marginRight: 8 }} />
+                    <Typography variant="h6" sx={{ color: 'gray.700' }}>
+                        Project M.
+                    </Typography>
+                </Box>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
                     <Box sx={{ position: 'relative' }}>
                         <Search sx={{ position: 'absolute', top: '50%', left: 8, transform: 'translateY(-50%)', color: 'gray.500' }} />
